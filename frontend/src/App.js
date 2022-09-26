@@ -3,6 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import HomePage from "./home-page/title-background";
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {lightBlue} from "@mui/material/colors";
+import MatchesList from "./match-cards/MatchesList";
 
 
 
@@ -84,8 +85,9 @@ function App() {
                           </FormControl>
                       </Box>
               </span>
-
+              <MatchesList matches={matches} />
           </div>
+
 
 
 
