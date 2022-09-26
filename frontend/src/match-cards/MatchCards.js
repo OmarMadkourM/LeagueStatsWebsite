@@ -4,7 +4,6 @@ import "./match_Cards.css"
 import {Divider, List, ListItem} from "@mui/material";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 export default function MatchCards({match,user}){
     const [participantData,setParticipantData] = useState([]);
     const [matchData,setMatchData] = useState({"info": {'gameMode': '','participants': []}, 'metadata':{}})
@@ -12,6 +11,7 @@ export default function MatchCards({match,user}){
     const [gameTime,setGameTime] = useState('')
     const current = match;
     const [show,setExpand] = useState(false);
+
 
     useEffect( ()=>{
         if(current !== '') {
@@ -156,7 +156,6 @@ const expand = ()=>{
                                             src={'https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/'
                                                 + par['item0'] + '.png'}
                                             alt={par['item0'] }
-                                            onError="this.onerror=null; this.src={CheckBoxOutlineBlankIcon}"
                                             style={{width:'50px',height:'50px'}}
                                          />
                                          <img
