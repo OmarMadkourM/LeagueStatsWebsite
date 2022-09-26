@@ -85,7 +85,10 @@ function App() {
                           </FormControl>
                       </Box>
               </span>
-              <MatchesList matches={matches} />
+              {(userNameRef.current !== undefined) &&(
+              <MatchesList matches={matches}  user={userNameRef.current.value}/>
+                  )}
+
           </div>
 
 

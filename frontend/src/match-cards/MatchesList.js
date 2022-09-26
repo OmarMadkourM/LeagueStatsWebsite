@@ -1,7 +1,7 @@
 import React from "react";
 import MatchCards from "./MatchCards";
 
-export default function MatchesList({matches}){
+export default function MatchesList({matches,user}){
 
 
 
