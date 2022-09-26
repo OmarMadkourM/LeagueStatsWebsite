@@ -1,3 +1,14 @@
+.row{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.column{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
 .App {
   text-align: center;
 }

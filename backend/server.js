@@ -10,11 +10,14 @@ var corsOptions = {
     ]
 };
 app.use(cors(corsOptions));
+//creating routes
 
-
+app.use('/match-data', require('./routes/matche_info'));
+app.use('/get-user', require('./routes/getName'));
+app.use('/regions', require('./routes/get_regions'));
 // just checking server status
 
-
+// gets userData
 app.get('/',(async  (req, res) => {
         var name = req.query.userName;
         var region = req.query.regionid
@@ -36,9 +39,33 @@ app.get('/',(async  (req, res) => {
         if (user.status === 200) {
             let data = await user.text();
             data = JSON.parse(data);
-            res.send(data)
+            const urlII = apiRoutes.key[region] + '/lol/match/v5/matches/by-puuid/' + data['puuid'] + '/ids?start=0&count=5';
+            // get match data aswell
+            const getMatches = await fetch(urlII ,{
+                    method: 'GET',
+                    headers: {
+                        "X-Riot-Token": apiRoutes.secret,
+                    },
+
+
+                }
+            )
+            if (getMatches.status === 200) {
+                let data1 = await getMatches.text();
+                data1 = JSON.parse(data1);
+                var results = {matches: data1, user: data}
+                res.send(results);
+                // handle data
+            }else{
+                let data = 'User not found'
+                // res.err(data);
+            }
+
+            // res.send(data);
+            // handle data
         }else{
-            res.send(user.statusMessage)
+            let data = 'User not found'
+            res.send(data);
         }
     }
         ))
