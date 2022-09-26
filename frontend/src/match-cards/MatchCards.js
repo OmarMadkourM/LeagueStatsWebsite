@@ -9,6 +9,7 @@ export default function MatchCards({match}){
     const [participantData,setParticipantData] = useState([]);
     const [matchData,setMatchData] = useState({"info": {'gameMode': '','participants': []}, 'metadata':{}})
     const [time,setTime] = useState('')
+    const [gameTime,setGameTime] = useState('')
     const current = match;
     const [show,setExpand] = useState(false);
 
@@ -31,8 +32,9 @@ export default function MatchCards({match}){
                     data = JSON.parse(data);
                     setParticipantData(data['info']['participants'].sort((a,b)=>{return a['teamId'] - b['teamId']}));
                     setMatchData(data);
-                    setTime(new Date(data['info']['gameEndTimestamp'] * 1000).toLocaleDateString("en-US"))
-                    console.log(matchData)
+                    setTime(new Date(data['info']['gameEndTimestamp']).toLocaleDateString("en-US"))
+                    setGameTime(new Date(data['info']['gameEndTimestamp']-data['info']['gameStartTimestamp']).toLocaleTimeString("en-US").slice(2,-2))
+                    console.log(data)
 
                 }
 
@@ -66,6 +68,7 @@ const expand = ()=>{
                         <div className='column'>
                             <div>{matchData['info']["gameMode"]}</div>
                             <div>{time}</div>
+                            <div>{gameTime}</div>
                         </div>
                     <div>
                     {current}
