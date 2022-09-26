@@ -25,7 +25,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #414854;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,9 +35,18 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input, select, textarea{
+    color: #ff0000;
 }
+
+
+.App-link {
+
+    font-family: Roboto, serif;
+    font-size: 14px;
+    color: #61dafb;
+}
+
 
 @keyframes App-logo-spin {
   from {
